@@ -79,7 +79,7 @@ dispatch_args.add_argument(
 
 class economicDispatch(Resource):
 
-    def get(self):
+    def post(self):
         args = dispatch_args.parse_args()
 
         response = {
