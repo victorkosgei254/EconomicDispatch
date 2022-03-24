@@ -4,7 +4,6 @@ from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
 api = Api(app)
 
 
@@ -75,6 +74,8 @@ dispatch_args.add_argument(
 dispatch_args.add_argument(
     "ACCURACY", type=float, help="ACCURACY required"
 )
+
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 class economicDispatch(Resource):
