@@ -21,6 +21,7 @@ def resultProducer(p1, c1, p2, c2, b11, b12, b21, b22, pd, accuracy):
         lmda = p1*(pd/2) + c1
         error = 2
         results = []
+        count = 0
         while(error > accuracy):
             payload = {}
             [a, b, c, d, e, f] = [p1*(1+2*lmda*b11), 2*p2*b12*lmda,
@@ -38,6 +39,17 @@ def resultProducer(p1, c1, p2, c2, b11, b12, b21, b22, pd, accuracy):
             payload['P1+P2'] = P1P2
             payload['PD + PL'] = PDPL
             results.append(payload)
+            count = count+1
+            if(count > 1000):
+                payload['Lamda'] = "FTC"
+                payload['P1'] = "FTC"
+                payload['P2'] = "FTC"
+                payload['Power Loss'] = "FTC"
+                payload['P1+P2'] = "FTC"
+                payload['PD + PL'] = "FTC"
+                results.append(payload)
+                return results
+                break
 
         return results
     except:
