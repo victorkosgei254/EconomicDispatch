@@ -1,8 +1,10 @@
 from tokenize import Double
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
 
@@ -91,4 +93,5 @@ class economicDispatch(Resource):
 
 
 # [a,b,c,d,e,f] = resultProducer(1,200,2,150,0.001,-0.0005,-0.0005,0.0024,100,0.01)
+
 api.add_resource(economicDispatch, "/")
