@@ -32,9 +32,11 @@ def resultProducer(p1, c1, p2, c2, b11, b12, b21, b22, pd, accuracy):
             P1P2 = round(P1+P2, 4)
             if ((PDPL-P1P2) > 0):
                 lmda = lmda + (PDPL-P1P2)
+                error = PDPL-P1P2
             else:
                 lmda = lmda + (PDPL+P1P2)
-            error = PDPL-P1P2
+                error = PDPL+P1P2
+
             payload['Lamda'] = lmda
             payload['P1'] = P1
             payload['P2'] = P2
